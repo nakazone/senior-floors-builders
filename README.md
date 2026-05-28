@@ -1,4 +1,4 @@
-# Senior Floors — Builder Partner Page
+# Senior Floors - Builder Partner Page
 
 Dedicated landing page for the Senior Floors Builder Partnership Program, targeting General Contractors, Architects, Interior Designers, and Developers in Colorado's luxury residential market.
 
@@ -34,8 +34,8 @@ Open [http://localhost:3000/builders](http://localhost:3000/builders).
 ## Project Structure
 
 ```
-app/builders/page.tsx          — Main landing page
-components/builders/           — All section components
+app/builders/page.tsx          - Main landing page
+components/builders/           - All section components
 ```
 
 ## Deployment

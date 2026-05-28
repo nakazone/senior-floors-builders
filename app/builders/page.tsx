@@ -15,7 +15,7 @@ import { CTAStrip } from '@/components/builders/CTAStrip'
 import { Footer } from '@/components/builders/Footer'
 
 export const metadata: Metadata = {
-  title: 'Builder Partner Program — Senior Floors Colorado',
+  title: 'Builder Partner Program - Senior Floors Colorado',
   description:
     'Partner with Senior Floors for premium hardwood and tile installation in Boulder, Morrison, Cherry Creek, and across Colorado. Dedicated service, real-time tracking, trade pricing.',
 }

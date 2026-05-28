@@ -5,26 +5,70 @@
 @layer base {
   :root {
     --font-inter: 'Inter', system-ui, sans-serif;
-    --font-poppins: 'Poppins', system-ui, sans-serif;
-    --navy: #1a2036;
-    --navy-deep: #141928;
-    --navy-soft: #222c47;
-    --tan: #d6b598;
-    --tan-light: #e8d0ba;
-    --tan-pale: #f5ede4;
-    --tan-dark: #c1a08c;
-    --off-white: #f7f8fc;
-    --light-gray: #e2e8f0;
-    --text-muted: #6b7280;
+    --primary-color: #1a2036;
+    --primary-hover: #252b47;
+    --secondary-color: #d6b598;
+    --secondary-hover: #e0c4a8;
     --text-dark: #1a2036;
+    --text-light: #4a5568;
+    --text-muted: #718096;
+    --bg-light: #f7f8fc;
+    --bg-white: #ffffff;
+    --border-color: #e2e8f0;
+  }
+
+  body {
+    @apply bg-white text-text-dark antialiased;
+    font-family: var(--font-inter);
   }
 
   html {
     scroll-behavior: smooth;
   }
+}
 
-  body {
-    @apply bg-white text-[#1A2036] antialiased;
-    font-family: var(--font-inter);
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sf-reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .sf-reveal {
+    animation: sf-reveal-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+}
+
+.cta-button {
+  @apply inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-semibold text-white transition-all duration-200;
+  @apply bg-primary hover:bg-primary-600 active:bg-primary-700;
+  @apply shadow-md hover:shadow-lg hover:-translate-y-0.5;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+}
+
+.cta-button-secondary {
+  @apply inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-semibold transition-all duration-200;
+  @apply bg-secondary text-text-dark;
+  @apply hover:bg-secondary-100 active:bg-secondary-200;
+  @apply shadow-md hover:shadow-lg hover:-translate-y-0.5;
+  @apply focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2;
+}
+
+.section-shell {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.section-padding {
+  @apply py-16 lg:py-24;
 }

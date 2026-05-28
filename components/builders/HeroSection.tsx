@@ -1,4 +1,8 @@
+'use client'
+
+import { Award, Building2, Shield, Star } from 'lucide-react'
 import { FadeUp } from './FadeUp'
+import { CTA } from '@/components/ui/CTA'
 
 const stats = [
   { value: '12+', label: 'Years serving Colorado' },
@@ -16,73 +20,52 @@ const perks = [
 ]
 
 const trustItems = [
-  { icon: '?', label: '5-Star Rated / 31 Reviews' },
-  { icon: '??', label: 'NWFA Certified' },
-  { icon: '???', label: '+2,000 Projects' },
-  { icon: '???', label: 'Licensed & Insured' },
+  { icon: Star, label: '5-Star Rated / 31 Reviews' },
+  { icon: Award, label: 'NWFA Certified' },
+  { icon: Building2, label: '+2,000 Projects' },
+  { icon: Shield, label: 'Licensed & Insured' },
 ]
-
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 18 18" className="h-[18px] w-[18px] shrink-0" aria-hidden="true">
-      <path
-        d="M4 9l4 4 6-6"
-        stroke="#1A2036"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#1A2036] pt-[80px]">
-      {/* Corner brackets */}
-      <div className="pointer-events-none absolute left-6 top-[110px] h-14 w-14 border-l-2 border-t-2 border-solid border-[#D6B598] opacity-40 lg:left-12" />
-      <div className="pointer-events-none absolute right-6 top-[110px] h-14 w-14 border-r-2 border-t-2 border-solid border-[#D6B598] opacity-40 lg:right-12" />
-      <div className="pointer-events-none absolute bottom-12 left-6 h-14 w-14 border-b-2 border-l-2 border-solid border-[#D6B598] opacity-40 lg:left-12" />
-      <div className="pointer-events-none absolute bottom-12 right-6 h-14 w-14 border-b-2 border-r-2 border-solid border-[#D6B598] opacity-40 lg:right-12" />
+    <section className="relative min-h-screen overflow-hidden pt-20 text-white md:pt-24">
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary via-primary-600 to-primary-800" aria-hidden />
+      <div className="absolute inset-0 z-10 bg-gradient-to-br from-primary/50 via-primary/40 to-primary/50" aria-hidden />
 
-      <div className="mx-auto grid max-w-[1280px] grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-[72px] lg:px-12">
+      <div className="section-shell relative z-20 grid grid-cols-1 items-center gap-12 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:py-24">
         <div>
           <FadeUp>
-            <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-[#D6B598]/30 bg-[#D6B598]/10 px-4 py-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#D6B598]" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#D6B598]">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
+              <span className="text-xs font-semibold uppercase tracking-[0.12em] text-secondary">
                 Builder Partnership Program
               </span>
             </div>
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <h1 className="font-poppins text-[clamp(36px,4.5vw,60px)] font-bold leading-[1.1] text-white">
+            <h1 className="mb-6 text-4xl font-bold leading-tight text-balance drop-shadow-lg sm:text-5xl lg:text-6xl">
               The flooring partner your projects{' '}
-              <span className="text-[#D6B598]">can rely on.</span>
+              <span className="text-secondary">can rely on.</span>
             </h1>
           </FadeUp>
 
           <FadeUp delay={0.2}>
-            <p className="mt-6 max-w-[500px] text-[16px] leading-[1.75] text-white/65">
+            <p className="mb-8 max-w-xl text-lg text-white/90 sm:text-xl">
               Senior Floors works side-by-side with Colorado&apos;s top builders, architects, and
-              designers — delivering premium hardwood and tile with the reliability, communication,
+              designers - delivering premium hardwood and tile with the reliability, communication,
               and follow-through your clients expect.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#form"
-                className="rounded-[6px] bg-[#D6B598] px-8 py-[15px] text-sm font-bold text-[#1A2036] transition-colors hover:bg-[#E8D0BA]"
-              >
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <CTA href="#form" variant="secondary" className="px-8 py-4">
                 Apply for Partnership
-              </a>
+              </CTA>
               <a
                 href="#how"
-                className="rounded-[6px] border border-white/25 px-8 py-[15px] text-sm font-medium text-white transition-colors hover:border-[#D6B598] hover:text-[#D6B598]"
+                className="inline-flex items-center justify-center rounded-md border border-white/25 px-8 py-4 text-base font-semibold text-white transition-all hover:border-secondary hover:bg-white/10"
               >
                 How It Works
               </a>
@@ -90,16 +73,14 @@ export function HeroSection() {
           </FadeUp>
 
           <FadeUp delay={0.4}>
-            <div className="mt-12 flex flex-wrap items-center gap-5 border-t border-white/10 pt-7">
+            <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-white/15 pt-8">
               {trustItems.map((item, i) => (
                 <div key={item.label} className="flex items-center gap-2">
-                  {i > 0 && <div className="mr-3 hidden h-7 w-px bg-white/12 sm:block" />}
-                  <div className="flex h-[34px] w-[34px] items-center justify-center rounded-full bg-[#D6B598]/12 text-[15px]">
-                    {item.icon}
+                  {i > 0 ? <div className="mr-2 hidden h-7 w-px bg-white/15 sm:block" /> : null}
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
+                    <item.icon className="h-4 w-4 text-secondary" />
                   </div>
-                  <span className="text-[12px] font-medium leading-tight text-white/70">
-                    {item.label}
-                  </span>
+                  <span className="text-xs font-medium text-white/80">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -107,35 +88,33 @@ export function HeroSection() {
         </div>
 
         <FadeUp delay={0.2}>
-          <div className="rounded-[12px] border border-[#D6B598]/18 bg-white/5 p-9 backdrop-blur-sm">
-            <p className="mb-6 text-[11px] font-bold uppercase tracking-[0.15em] text-[#D6B598]">
+          <div className="rounded-xl border border-white/15 bg-white/10 p-8 backdrop-blur-sm">
+            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
               Partnership At a Glance
             </p>
 
-            <div className="mb-7 grid grid-cols-2 gap-4">
+            <div className="mb-6 grid grid-cols-2 gap-4">
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-[8px] border border-white/7 bg-white/4 py-[18px] text-center"
+                  className="rounded-lg border border-white/10 bg-white/5 py-4 text-center"
                 >
-                  <p className="font-poppins text-[32px] font-bold leading-none text-[#D6B598]">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1.5 text-[11px] leading-snug text-white/55">{stat.label}</p>
+                  <p className="text-3xl font-bold text-secondary">{stat.value}</p>
+                  <p className="mt-1 text-xs leading-snug text-white/70">{stat.label}</p>
                 </div>
               ))}
             </div>
 
-            <ul className="space-y-0">
+            <ul>
               {perks.map((perk, i) => (
                 <li
                   key={perk}
-                  className={`flex items-center gap-2.5 py-2.5 text-[13px] text-white/78 ${
-                    i < perks.length - 1 ? 'border-b border-white/7' : ''
+                  className={`flex items-center gap-3 py-2.5 text-sm text-white/85 ${
+                    i < perks.length - 1 ? 'border-b border-white/10' : ''
                   }`}
                 >
-                  <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#D6B598]">
-                    <CheckIcon />
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-bold text-primary">
+                    ?
                   </span>
                   {perk}
                 </li>

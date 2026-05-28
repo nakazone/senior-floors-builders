@@ -1,6 +1,10 @@
 'use client'
 
+import { useState } from 'react'
+import { Phone } from 'lucide-react'
 import { Logo } from './Logo'
+import { cn } from '@/lib/utils'
+import { SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from '@/lib/siteConfig'
 
 const navLinks = [
   { href: '#video', label: 'About Us' },
@@ -11,39 +15,107 @@ const navLinks = [
 ]
 
 export function Navbar() {
-  const phone = process.env.NEXT_PUBLIC_PHONE ?? '(720) 751-9813'
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 z-50 flex h-[80px] w-full items-center justify-between bg-[#1A2036] px-6 lg:px-12">
-      <Logo />
+    <header className="fixed left-0 right-0 top-0 z-50 bg-primary shadow-lg">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-20 items-center justify-between md:h-24">
+          <div className="flex shrink-0 items-center">
+            <Logo />
+          </div>
 
-      <ul className="hidden items-center gap-9 lg:flex">
-        {navLinks.map((link) => (
-          <li key={link.href}>
+          <nav className="hidden flex-1 items-center justify-center gap-8 lg:flex">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="relative py-2 text-sm font-medium text-white/90 transition-all duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-secondary after:transition-all after:duration-200 hover:text-white hover:after:w-full"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden shrink-0 items-center gap-3 lg:flex">
             <a
-              href={link.href}
-              className="text-[13px] text-white/80 transition-colors hover:text-[#D6B598]"
+              href={SITE_PHONE_TEL}
+              className="whitespace-nowrap rounded-md bg-secondary px-4 py-2 text-sm font-semibold text-text-dark shadow-md transition-all hover:-translate-y-0.5 hover:bg-secondary-100 hover:shadow-lg"
             >
-              {link.label}
+              Call Now
             </a>
-          </li>
-        ))}
-      </ul>
+            <a
+              href="#form"
+              className="whitespace-nowrap rounded-md bg-secondary px-4 py-2 text-sm font-semibold text-text-dark shadow-md transition-all hover:-translate-y-0.5 hover:bg-secondary-100 hover:shadow-lg"
+            >
+              Apply as Partner
+            </a>
+          </div>
 
-      <div className="flex items-center gap-3">
-        <a
-          href={`tel:${phone.replace(/\D/g, '')}`}
-          className="hidden rounded-[6px] border border-white/25 px-5 py-2.5 text-[13px] font-medium text-white transition-colors hover:border-[#D6B598] hover:text-[#D6B598] sm:inline-block"
+          <button
+            type="button"
+            className="z-50 flex cursor-pointer flex-col gap-1.5 border-none bg-transparent p-2 lg:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            <span
+              className={cn(
+                'h-0.5 w-6 rounded bg-white transition-all',
+                mobileMenuOpen && 'translate-y-2 rotate-45'
+              )}
+            />
+            <span
+              className={cn(
+                'h-0.5 w-6 rounded bg-white transition-all',
+                mobileMenuOpen && 'opacity-0'
+              )}
+            />
+            <span
+              className={cn(
+                'h-0.5 w-6 rounded bg-white transition-all',
+                mobileMenuOpen && '-translate-y-2 -rotate-45'
+              )}
+            />
+          </button>
+        </div>
+
+        <div
+          className={cn(
+            'overflow-hidden transition-all duration-400 lg:hidden',
+            mobileMenuOpen ? 'max-h-[85vh] overflow-y-auto opacity-100' : 'max-h-0 opacity-0'
+          )}
         >
-          {phone}
-        </a>
-        <a
-          href="#form"
-          className="rounded-[6px] bg-[#D6B598] px-5 py-2.5 text-[13px] font-bold text-[#1A2036] transition-colors hover:bg-[#E8D0BA]"
-        >
-          Apply as Partner
-        </a>
+          <nav className="space-y-1 py-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="block border-b border-white/10 px-4 py-3 text-base font-medium text-white transition-colors hover:bg-white/10"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="space-y-2 px-4 pt-4">
+              <a
+                href={SITE_PHONE_TEL}
+                className="flex w-full items-center justify-center gap-2 rounded-md bg-secondary px-4 py-3 text-center text-sm font-semibold text-text-dark transition-all hover:bg-secondary-100"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Phone className="h-4 w-4" />
+                Call {SITE_PHONE_DISPLAY}
+              </a>
+              <a
+                href="#form"
+                className="block w-full rounded-md bg-secondary px-4 py-3 text-center text-sm font-semibold text-text-dark transition-all hover:bg-secondary-100"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Apply as Partner
+              </a>
+            </div>
+          </nav>
+        </div>
       </div>
-    </nav>
+    </header>
   )
 }

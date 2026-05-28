@@ -2,7 +2,10 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Check } from 'lucide-react'
 import { FadeUp } from './FadeUp'
+import { SectionHeader } from './SectionHeader'
+import { cn } from '@/lib/utils'
 
 interface ApplicationFormData {
   firstName: string
@@ -25,48 +28,28 @@ const perks = [
   'Co-marketing and referral recognition opportunities',
 ]
 
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 20 20" className="h-5 w-5 shrink-0" aria-hidden="true">
-      <path
-        d="M4 10l5 5 7-8"
-        stroke="#D6B598"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
 const inputClass =
-  'w-full rounded-[6px] border-[1.5px] border-[#E2E8F0] bg-[#F7F8FC] px-[14px] py-[11px] text-[14px] text-[#1A2036] outline-none transition-colors focus:border-[#1A2036] focus:bg-white'
+  'w-full rounded-md border border-gray-300 bg-bg-light px-4 py-3 text-sm text-primary outline-none transition-colors focus:border-primary focus:bg-white'
 
 export function ApplicationFormSection() {
   const [submitted, setSubmitted] = useState(false)
   const { register, handleSubmit } = useForm<ApplicationFormData>()
 
   const onSubmit = async (_data: ApplicationFormData) => {
-    // TODO: connect to POST /api/partner-application or webhook
     setSubmitted(true)
   }
 
   return (
-    <section id="form" className="bg-[#F7F8FC] px-6 py-24 lg:px-12">
-      <div className="mx-auto grid max-w-[1280px] grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-20">
+    <section id="form" className="section-padding bg-bg-light">
+      <div className="section-shell grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <FadeUp>
-            <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#C1A08C]">
-              Apply now
-            </p>
-            <h2 className="font-poppins text-[clamp(26px,3vw,38px)] font-bold leading-[1.2] text-[#1A2036]">
-              Ready to build a better partnership?
-            </h2>
-            <p className="mb-9 mt-4 text-[15px] leading-[1.8] text-[#6B7280]">
-              Tell us about your firm and how you work. We review every application personally and
-              respond within 48 business hours.
-            </p>
+            <SectionHeader
+              align="left"
+              label="Apply now"
+              title="Ready to build a better partnership?"
+              subtitle="Tell us about your firm and how you work. We review every application personally and respond within 48 business hours."
+            />
           </FadeUp>
 
           <FadeUp delay={0.1}>
@@ -74,12 +57,13 @@ export function ApplicationFormSection() {
               {perks.map((perk, i) => (
                 <li
                   key={perk}
-                  className={`flex items-start gap-3 py-3 text-[14px] leading-snug text-[#1A2036] ${
-                    i < perks.length - 1 ? 'border-b border-[#E2E8F0]' : ''
-                  }`}
+                  className={cn(
+                    'flex items-start gap-3 py-3 text-sm leading-snug text-primary',
+                    i < perks.length - 1 && 'border-b border-gray-200'
+                  )}
                 >
-                  <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#1A2036]">
-                    <CheckIcon />
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary">
+                    <Check className="h-3 w-3 text-secondary" />
                   </span>
                   {perk}
                 </li>
@@ -89,65 +73,43 @@ export function ApplicationFormSection() {
         </div>
 
         <FadeUp delay={0.2}>
-          <div className="rounded-[12px] border border-[#E2E8F0] bg-white p-8 shadow-sm lg:p-11">
-            <h3 className="font-poppins text-[22px] font-bold text-[#1A2036]">
-              Partner Application
-            </h3>
-            <p className="mb-7 mt-1.5 text-[13px] text-[#6B7280]">
+          <div className="rounded-lg border border-gray-200 bg-white p-8 shadow-md lg:p-10">
+            <h3 className="text-2xl font-bold text-primary">Partner Application</h3>
+            <p className="mb-7 mt-1.5 text-sm text-gray-600">
               We review every application and respond within 48 business hours.
             </p>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-[18px]">
-              <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-[12px] font-semibold text-[#1A2036]">
-                    First Name
-                  </label>
+                  <label className="mb-1.5 block text-sm font-semibold text-primary">First Name</label>
                   <input {...register('firstName', { required: true })} className={inputClass} />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-[12px] font-semibold text-[#1A2036]">
-                    Last Name
-                  </label>
+                  <label className="mb-1.5 block text-sm font-semibold text-primary">Last Name</label>
                   <input {...register('lastName', { required: true })} className={inputClass} />
                 </div>
               </div>
 
               <div>
-                <label className="mb-1.5 block text-[12px] font-semibold text-[#1A2036]">
-                  Company / Studio
-                </label>
+                <label className="mb-1.5 block text-sm font-semibold text-primary">Company / Studio</label>
                 <input {...register('company', { required: true })} className={inputClass} />
               </div>
 
-              <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-[12px] font-semibold text-[#1A2036]">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    {...register('email', { required: true })}
-                    className={inputClass}
-                  />
+                  <label className="mb-1.5 block text-sm font-semibold text-primary">Email</label>
+                  <input type="email" {...register('email', { required: true })} className={inputClass} />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-[12px] font-semibold text-[#1A2036]">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    {...register('phone', { required: true })}
-                    className={inputClass}
-                  />
+                  <label className="mb-1.5 block text-sm font-semibold text-primary">Phone</label>
+                  <input type="tel" {...register('phone', { required: true })} className={inputClass} />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-[12px] font-semibold text-[#1A2036]">
-                    Your Role
-                  </label>
+                  <label className="mb-1.5 block text-sm font-semibold text-primary">Your Role</label>
                   <select {...register('role', { required: true })} className={inputClass}>
                     <option value="">Select role</option>
                     <option value="General Contractor">General Contractor</option>
@@ -159,53 +121,50 @@ export function ApplicationFormSection() {
                   </select>
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-[12px] font-semibold text-[#1A2036]">
-                    Typical Project Size
-                  </label>
+                  <label className="mb-1.5 block text-sm font-semibold text-primary">Typical Project Size</label>
                   <select {...register('projectSize', { required: true })} className={inputClass}>
                     <option value="">Select size</option>
                     <option value="Under $300K">Under $300K</option>
-                    <option value="$300K–$500K">$300K–$500K</option>
-                    <option value="$500K–$1M">$500K–$1M</option>
-                    <option value="$1M–$3M">$1M–$3M</option>
+                    <option value="$300K$500K">$300K$500K</option>
+                    <option value="$500K$1M">$500K$1M</option>
+                    <option value="$1M$3M">$1M$3M</option>
                     <option value="$3M+">$3M+</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="mb-1.5 block text-[12px] font-semibold text-[#1A2036]">
-                  Primary service area
-                </label>
+                <label className="mb-1.5 block text-sm font-semibold text-primary">Primary service area</label>
                 <input {...register('serviceArea', { required: true })} className={inputClass} />
               </div>
 
               <div>
-                <label className="mb-1.5 block text-[12px] font-semibold text-[#1A2036]">
+                <label className="mb-1.5 block text-sm font-semibold text-primary">
                   What matters most in a flooring partner?
                 </label>
                 <textarea
                   {...register('priorities', { required: true })}
                   rows={4}
-                  className={`${inputClass} min-h-[88px] resize-y`}
+                  className={cn(inputClass, 'min-h-[88px] resize-y')}
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={submitted}
-                className={`w-full rounded-[6px] py-[15px] text-[14px] font-bold transition-colors ${
+                className={cn(
+                  'w-full rounded-md py-3.5 text-sm font-bold transition-colors',
                   submitted
-                    ? 'cursor-default bg-[#1E7D40] text-white'
-                    : 'bg-[#1A2036] text-white hover:bg-[#222C47]'
-                }`}
+                    ? 'cursor-default bg-green-700 text-white'
+                    : 'cta-button'
+                )}
               >
                 {submitted
-                  ? "? Application Received — We'll be in touch within 48h"
+                  ? "? Application Received - We'll be in touch within 48h"
                   : 'Submit Application'}
               </button>
 
-              <p className="text-center text-[12px] leading-relaxed text-[#6B7280]">
+              <p className="text-center text-xs leading-relaxed text-gray-600">
                 By submitting, you agree to be contacted by Senior Floors regarding the partner
                 program. We never share your information.
               </p>

@@ -1,4 +1,5 @@
 import { FadeUp } from './FadeUp'
+import { MAIN_SITE_URL } from '@/lib/siteConfig'
 
 const projects = [
   {
@@ -45,21 +46,21 @@ const projects = [
 
 export function RecentProjectsSection() {
   return (
-    <section id="projects" className="bg-white px-6 py-24 lg:px-12">
-      <div className="mx-auto max-w-[1280px]">
+    <section id="projects" className="section-padding border-t border-gray-100 bg-white">
+      <div className="section-shell">
         <FadeUp>
           <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#C1A08C]">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-secondary-800">
                 Portfolio
               </p>
-              <h2 className="font-poppins text-[clamp(26px,3vw,38px)] font-bold leading-[1.2] text-[#1A2036]">
+              <h2 className="text-3xl font-bold text-primary sm:text-4xl">
                 Recent projects we&apos;re proud of.
               </h2>
             </div>
             <a
-              href="https://senior-floors.com/gallery"
-              className="border-b border-[#D6B598] text-[14px] font-semibold text-[#1A2036] no-underline transition-colors hover:text-[#C1A08C]"
+              href={`${MAIN_SITE_URL}/gallery`}
+              className="text-sm font-bold text-primary transition-colors hover:text-secondary hover:underline"
             >
               View full gallery ?
             </a>
@@ -74,7 +75,7 @@ export function RecentProjectsSection() {
               className={project.featured ? 'lg:row-span-2' : ''}
             >
               <div
-                className={`group relative cursor-pointer overflow-hidden rounded-[12px] bg-[#222C47] ${
+                className={`group relative cursor-pointer overflow-hidden rounded-lg bg-primary-600 shadow-md ${
                   project.featured ? 'h-[220px] lg:h-full' : 'h-[220px]'
                 }`}
               >
@@ -82,22 +83,22 @@ export function RecentProjectsSection() {
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                   style={{ backgroundImage: project.gradient }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E18]/78 via-[#0A0E18]/10 to-transparent transition-all group-hover:from-[#0A0E18]/88" />
-                <span className="absolute right-4 top-4 -translate-y-1 rounded-full bg-[#D6B598] px-3.5 py-1.5 text-[11px] font-bold text-[#1A2036] opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary/10 to-transparent transition-all group-hover:from-primary-900/90" />
+                <span className="absolute right-4 top-4 -translate-y-1 rounded-full bg-secondary px-3 py-1.5 text-xs font-bold text-primary opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
                   View Project
                 </span>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-[#D6B598]/30 bg-[#D6B598]/18 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#D6B598]">
-                    ?? {project.location}
+                  <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-secondary/30 bg-secondary/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-secondary">
+                    {project.location}
                   </span>
                   <h3
-                    className={`font-poppins font-semibold leading-[1.2] text-white ${
+                    className={`font-semibold leading-tight text-white ${
                       project.featured ? 'text-2xl' : 'text-lg'
                     }`}
                   >
                     {project.name}
                   </h3>
-                  <p className="mt-1 text-[12px] text-white/55">{project.detail}</p>
+                  <p className="mt-1 text-xs text-white/70">{project.detail}</p>
                 </div>
               </div>
             </FadeUp>

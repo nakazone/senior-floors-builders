@@ -3,11 +3,8 @@ const nextConfig = {
   output: 'export',
   reactStrictMode: true,
   poweredByHeader: false,
-  eslint: {
-    ignoreDuringBuilds: false,
-  },
-  typescript: {
-    ignoreBuildErrors: false,
+  images: {
+    unoptimized: true,
   },
   experimental: {
     optimizePackageImports: ['lucide-react'],

@@ -1,4 +1,6 @@
+import { MapPin } from 'lucide-react'
 import { FadeUp } from './FadeUp'
+import { SectionHeader } from './SectionHeader'
 
 const regions = [
   'Boulder',
@@ -15,27 +17,23 @@ const regions = [
 
 export function RegionsSection() {
   return (
-    <section className="border-y border-[#C1A08C]/20 bg-[#F5EDE4] px-6 py-[72px] lg:px-12">
-      <div className="mx-auto max-w-[1280px]">
+    <section className="border-y border-secondary/20 bg-secondary-50 py-14 lg:py-20">
+      <div className="section-shell">
         <FadeUp>
-          <div className="text-center">
-            <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#C1A08C]">
-              Service areas
-            </p>
-            <h2 className="font-poppins text-[clamp(26px,3vw,38px)] font-bold leading-[1.2] text-[#1A2036]">
-              Serving Colorado&apos;s premium build markets.
-            </h2>
-          </div>
+          <SectionHeader
+            label="Service areas"
+            title="Serving Colorado's premium build markets."
+          />
         </FadeUp>
 
         <FadeUp delay={0.1}>
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {regions.map((region) => (
               <span
                 key={region}
-                className="flex items-center gap-1.5 rounded-full border-[1.5px] border-[#D6B598] bg-white px-6 py-2.5 text-[13px] font-semibold text-[#1A2036]"
+                className="inline-flex items-center gap-2 rounded-full border border-secondary bg-white px-5 py-2.5 text-sm font-semibold text-primary shadow-sm"
               >
-                <span className="text-[12px]">??</span>
+                <MapPin className="h-3.5 w-3.5 text-secondary" />
                 {region}
               </span>
             ))}
