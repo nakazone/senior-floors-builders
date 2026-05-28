@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-poppins: 'Poppins', system-ui, sans-serif;
     --navy: #1a2036;
     --navy-deep: #141928;
     --navy-soft: #222c47;
