@@ -1,5 +1,5 @@
-import { Star } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { STARS_5 } from '@/lib/symbols'
 
 interface StarRatingProps {
   count?: number
@@ -8,24 +8,29 @@ interface StarRatingProps {
 }
 
 const sizeClass = {
-  sm: 'h-3.5 w-3.5',
-  md: 'h-4 w-4',
-  lg: 'h-5 w-5',
+  sm: 'text-sm tracking-wider',
+  md: 'text-base tracking-wider',
+  lg: 'text-xl tracking-[0.2em]',
 }
 
 export function StarRating({ count = 5, size = 'md', className }: StarRatingProps) {
+  const stars = '\u2605'.repeat(count)
+
   return (
     <span
-      className={cn('inline-flex items-center gap-0.5', className)}
+      className={cn('font-semibold text-secondary', sizeClass[size], className)}
       aria-label={`${count} out of 5 stars`}
     >
-      {Array.from({ length: count }).map((_, index) => (
-        <Star
-          key={index}
-          className={cn(sizeClass[size], 'fill-secondary text-secondary')}
-          aria-hidden
-        />
-      ))}
+      {stars}
+    </span>
+  )
+}
+
+/** Default export alias for footer badge matching main site copy. */
+export function GoogleReviewStars({ className }: { className?: string }) {
+  return (
+    <span className={cn('font-semibold tracking-wider text-secondary', className)}>
+      {STARS_5} Google Reviews
     </span>
   )
 }

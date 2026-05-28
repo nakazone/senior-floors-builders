@@ -1,4 +1,5 @@
 import { FadeUp } from './FadeUp'
+import { ARROW_RIGHT, MIDDLE_DOT } from '@/lib/symbols'
 import { MAIN_SITE_URL } from '@/lib/siteConfig'
 
 const projects = [
@@ -8,7 +9,7 @@ const projects = [
       'linear-gradient(172deg, #3B2517 0%, #5C3A24 8%, #3E2818 16%, #6B4A2E 24%, #4A3020 32%, #5E3D28 40%, #3A2315 48%, #664530 56%)',
     location: 'Boulder, CO',
     name: 'Foothills Modern Residence',
-    detail: '4,800 sqft · Wide-plank European White Oak · Builder: Anderson Group',
+    detail: `4,800 sqft ${MIDDLE_DOT} Wide-plank European White Oak ${MIDDLE_DOT} Builder: Anderson Group`,
   },
   {
     featured: false,
@@ -16,7 +17,7 @@ const projects = [
       'linear-gradient(168deg, #6B5140 0%, #8A6A50 15%, #5C4030 30%, #7A5A45 45%, #664E3C 60%, #8C6C52 75%)',
     location: 'Cherry Creek',
     name: 'Penthouse Renovation',
-    detail: '2,100 sqft · Engineered Oak · Designer: M. Torres Studio',
+    detail: `2,100 sqft ${MIDDLE_DOT} Engineered Oak ${MIDDLE_DOT} Designer: M. Torres Studio`,
   },
   {
     featured: false,
@@ -24,7 +25,7 @@ const projects = [
       'linear-gradient(175deg, #2A1E14 0%, #4A3525 20%, #2E2018 40%, #5A4030 60%, #302215 80%)',
     location: 'Evergreen, CO',
     name: 'Mountain Lodge Estate',
-    detail: '6,200 sqft · Reclaimed Hardwood',
+    detail: `6,200 sqft ${MIDDLE_DOT} Reclaimed Hardwood`,
   },
   {
     featured: false,
@@ -32,7 +33,7 @@ const projects = [
       'linear-gradient(170deg, #8A6B4A 0%, #A87C54 20%, #7A5B3C 40%, #967050 60%, #8C6D4C 80%)',
     location: 'Morrison, CO',
     name: 'Red Rocks View Home',
-    detail: '3,400 sqft · LVP Luxury Vinyl',
+    detail: `3,400 sqft ${MIDDLE_DOT} LVP Luxury Vinyl`,
   },
   {
     featured: false,
@@ -40,7 +41,7 @@ const projects = [
       'linear-gradient(165deg, #4A3828 0%, #6A5240 18%, #3E2E20 36%, #5C4636 54%, #4C3A2A 72%)',
     location: 'Greenwood Village',
     name: 'Executive Estate',
-    detail: '5,100 sqft · Custom Stone & Hardwood',
+    detail: `5,100 sqft ${MIDDLE_DOT} Custom Stone & Hardwood`,
   },
 ]
 
@@ -62,7 +63,7 @@ export function RecentProjectsSection() {
               href={`${MAIN_SITE_URL}/gallery`}
               className="text-sm font-bold text-primary transition-colors hover:text-secondary hover:underline"
             >
-              View full gallery ?
+              View full gallery {ARROW_RIGHT}
             </a>
           </div>
         </FadeUp>

@@ -7,12 +7,14 @@ import { SectionHeader } from './SectionHeader'
 import { CTA } from '@/components/ui/CTA'
 import { PORTAL_URL } from '@/lib/siteConfig'
 
+import { CHECK, EN_DASH, ARROW_RIGHT } from '@/lib/symbols'
+
 const pricingRows = [
-  { service: 'Hardwood Sanding & Refinishing', coverage: 'per sq ft', rate: '$3.50 ? $5.00' },
-  { service: 'Hardwood Installation', coverage: 'per sq ft', rate: '$4.00 ? $6.50' },
-  { service: 'Engineered Wood Install', coverage: 'per sq ft', rate: '$3.75 ? $5.50' },
-  { service: 'LVP / Luxury Vinyl Plank', coverage: 'per sq ft', rate: '$2.80 ? $4.00' },
-  { service: 'Tile & Stone Installation', coverage: 'per sq ft', rate: '$5.00 ? $9.00' },
+  { service: 'Hardwood Sanding & Refinishing', coverage: 'per sq ft', rate: `$3.50 ${EN_DASH} $5.00` },
+  { service: 'Hardwood Installation', coverage: 'per sq ft', rate: `$4.00 ${EN_DASH} $6.50` },
+  { service: 'Engineered Wood Install', coverage: 'per sq ft', rate: `$3.75 ${EN_DASH} $5.50` },
+  { service: 'LVP / Luxury Vinyl Plank', coverage: 'per sq ft', rate: `$2.80 ${EN_DASH} $4.00` },
+  { service: 'Tile & Stone Installation', coverage: 'per sq ft', rate: `$5.00 ${EN_DASH} $9.00` },
   { service: 'Stairs & Custom Patterns', coverage: 'per unit / area', locked: true },
   { service: 'Material Sourcing (trade)', coverage: 'full catalog', locked: true },
 ]
@@ -92,7 +94,7 @@ function LoginCard() {
         <p className="text-sm text-white/50">
           Not a partner yet?{' '}
           <a href="#form" className="font-semibold text-secondary hover:underline">
-            Apply for access ?
+            Apply for access {ARROW_RIGHT}
           </a>
         </p>
       </div>

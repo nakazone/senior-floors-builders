@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Check } from 'lucide-react'
+import { CHECK, EN_DASH } from '@/lib/symbols'
 import { FadeUp } from './FadeUp'
 import { SectionHeader } from './SectionHeader'
 import { cn } from '@/lib/utils'
@@ -62,8 +62,8 @@ export function ApplicationFormSection() {
                     i < perks.length - 1 && 'border-b border-gray-200'
                   )}
                 >
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary">
-                    <Check className="h-3 w-3 text-secondary" />
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-secondary">
+                    {CHECK}
                   </span>
                   {perk}
                 </li>
@@ -125,9 +125,9 @@ export function ApplicationFormSection() {
                   <select {...register('projectSize', { required: true })} className={inputClass}>
                     <option value="">Select size</option>
                     <option value="Under $300K">Under $300K</option>
-                    <option value="$300K$500K">$300K$500K</option>
-                    <option value="$500K$1M">$500K$1M</option>
-                    <option value="$1M$3M">$1M$3M</option>
+                    <option value={`$300K${EN_DASH}$500K`}>{`$300K${EN_DASH}$500K`}</option>
+                    <option value={`$500K${EN_DASH}$1M`}>{`$500K${EN_DASH}$1M`}</option>
+                    <option value={`$1M${EN_DASH}$3M`}>{`$1M${EN_DASH}$3M`}</option>
                     <option value="$3M+">$3M+</option>
                   </select>
                 </div>
@@ -160,7 +160,7 @@ export function ApplicationFormSection() {
                 )}
               >
                 {submitted
-                  ? "? Application Received - We'll be in touch within 48h"
+                  ? `${CHECK} Application Received - We'll be in touch within 48h`
                   : 'Submit Application'}
               </button>
 

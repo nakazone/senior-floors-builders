@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { FadeUp } from './FadeUp'
 import { SectionHeader } from './SectionHeader'
+import { ARROW_RIGHT } from '@/lib/symbols'
 import { CTA } from '@/components/ui/CTA'
 
 const bullets = [
@@ -88,7 +89,7 @@ export function VideoSection() {
               ))}
             </ul>
             <CTA href="#form" variant="secondary" className="shrink-0">
-              Become a Partner ?
+              Become a Partner {ARROW_RIGHT}
             </CTA>
           </div>
         </FadeUp>

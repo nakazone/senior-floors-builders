@@ -1,3 +1,5 @@
+import { Check } from 'lucide-react'
+
 const items = [
   'Project Tracking',
   'Premium Service',
@@ -14,7 +16,7 @@ export function TrustBar() {
           key={item}
           className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-primary"
         >
-          <span className="text-sm">?</span>
+          <Check className="h-3.5 w-3.5 shrink-0" aria-hidden />
           {item}
         </span>
       ))}

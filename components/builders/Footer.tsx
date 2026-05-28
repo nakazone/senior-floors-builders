@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Instagram, Facebook, MapPin } from 'lucide-react'
 import { Logo } from './Logo'
-import { StarRating } from './StarRating'
+import { GoogleReviewStars } from './StarRating'
 import {
   BUSINESS_ADDRESS,
   getBusinessAddressCityStateZip,
@@ -50,9 +50,8 @@ export function Footer() {
               ))}
             </div>
             <div className="mt-2 inline-block rounded-md border border-white/20 bg-white/10 px-4 py-2">
-              <div className="mb-1 flex items-center justify-center gap-1.5 text-sm font-semibold tracking-wider text-secondary">
-                <StarRating size="sm" />
-                Google Reviews
+              <div className="mb-1 text-center">
+                <GoogleReviewStars className="text-sm" />
               </div>
               <div className="text-center text-xs font-semibold uppercase tracking-wide text-white/95">
                 Hardwood Flooring Specialists

@@ -1,6 +1,7 @@
 'use client'
 
 import { Award, Building2, Shield, Star } from 'lucide-react'
+import { CHECK } from '@/lib/symbols'
 import { FadeUp } from './FadeUp'
 import { CTA } from '@/components/ui/CTA'
 
@@ -114,7 +115,7 @@ export function HeroSection() {
                   }`}
                 >
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-bold text-primary">
-                    ?
+                    {CHECK}
                   </span>
                   {perk}
                 </li>
